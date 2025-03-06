@@ -16,10 +16,9 @@ class _LocationScreenState extends State<LocationScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/location_background.jpg'),
+            image: AssetImage('images/lo_bg.png'),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.white, BlendMode.dstATop),
+            colorFilter: ColorFilter.mode(Colors.white, BlendMode.dstATop),
           ),
         ),
         constraints: BoxConstraints.expand(),
@@ -33,17 +32,11 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () {},
-                    child: Icon(
-                      Icons.near_me,
-                      size: 50.0,
-                    ),
+                    child: Icon(Icons.near_me, size: 50.0),
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Icon(
-                      Icons.location_city,
-                      size: 50.0,
-                    ),
+                    child: Icon(Icons.location_city, size: 50.0),
                   ),
                 ],
               ),
@@ -51,14 +44,8 @@ class _LocationScreenState extends State<LocationScreen> {
                 padding: EdgeInsets.only(left: 15.0),
                 child: Row(
                   children: <Widget>[
-                    Text(
-                      '32°',
-                      style: kTempTextStyle,
-                    ),
-                    Text(
-                      '☀️',
-                      style: kConditionTextStyle,
-                    ),
+                    Text('32°', style: kTempTextStyle),
+                    Text('☀️', style: kConditionTextStyle),
                   ],
                 ),
               ),

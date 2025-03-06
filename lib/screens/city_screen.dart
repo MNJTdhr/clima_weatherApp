@@ -16,7 +16,7 @@ class _CityScreenState extends State<CityScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
+            image: AssetImage('images/bg_city.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -28,22 +28,13 @@ class _CityScreenState extends State<CityScreen> {
                 alignment: Alignment.topLeft,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 50.0,
-                  ),
+                  child: Icon(Icons.arrow_back_ios, size: 50.0),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(20.0),
-                child: null,
-              ),
+              Container(padding: EdgeInsets.all(20.0), child: null),
               ElevatedButton(
                 onPressed: () {},
-                child: Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
-                ),
+                child: Text('Get Weather', style: kButtonTextStyle),
               ),
             ],
           ),

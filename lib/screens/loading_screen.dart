@@ -10,15 +10,14 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  final LocationSettings locationSettings = LocationSettings(
-    accuracy: LocationAccuracy.high,
-    distanceFilter: 100,
-  );
-
   void getLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-      locationSettings: locationSettings,
+    final LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
     );
+    LocationPermission permission = await Geolocator.requestPermission();
+    Position position = await Geolocator.getCurrentPosition();
+    print(position); //here you will get your Latitude and Longitude
   }
 
   @override
@@ -27,7 +26,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            //Get the current location
+            getLocation();
           },
           child: Text('Get Location'),
         ),
