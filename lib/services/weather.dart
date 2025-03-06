@@ -1,3 +1,4 @@
+// services/weather.dart
 class WeatherModel {
   String getWeatherIcon(int condition) {
     if (condition < 300) {
