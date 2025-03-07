@@ -10,25 +10,46 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  void getLocation() async {
-    final LocationSettings locationSettings = LocationSettings(
-      accuracy: LocationAccuracy.high,
-      distanceFilter: 100,
-    );
-    LocationPermission permission = await Geolocator.requestPermission();
-    Position position = await Geolocator.getCurrentPosition();
-    print(position); //here you will get your Latitude and Longitude
-  }
+  Position? position;
+  bool? isLoaded;
+
+  void getLocation() async {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            getLocation();
-          },
-          child: Text('Get Location'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Enter the button to get your location"),
+            ElevatedButton(
+              onPressed: () async {
+
+                //display loader
+                setState(() {
+                  isLoaded = true;
+                });
+                
+                //ask permission
+                await Geolocator.requestPermission();
+                
+                //get location
+                Geolocator.getCurrentPosition().then(
+                  (positionValue) => setState(() {
+                    position = positionValue;
+                    isLoaded = false;
+                  }),
+                );
+              },
+              child: Text('Get Location'),
+            ),
+            SizedBox(height: 32),
+            if(isLoaded ?? false) CircularProgressIndicator(),
+            Text('${position?.latitude ?? ""}'),
+            SizedBox(height: 8),
+            Text('${position?.longitude ?? ""}'),
+          ],
         ),
       ),
     );
